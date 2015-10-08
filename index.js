@@ -16,7 +16,7 @@ var Counter = React.createClass({
     if (this.stop) return;
 
     raf(this.animate);
-    this.draw()
+    this.draw();
   },
 
   draw: function() {
@@ -28,7 +28,7 @@ var Counter = React.createClass({
     var easing = this.props.easing;
 
     easing = easing && easing in ease ? easing : 'outCube';
-    var now = Date.now()
+    var now = Date.now();
     if (now - this.start >= time) this.stop = true;
     var percentage = (now - this.start) / time;
     percentage = percentage > 1 ? 1 : percentage;
@@ -39,7 +39,11 @@ var Counter = React.createClass({
   },
 
   render: function() {
-    return React.DOM.span({ className: 'counter' }, Math.round(this.state.value));
+    return (
+      <span className='counter'>
+        {Math.round(this.state.value)}
+      </span>
+    );
   }
 });
 
